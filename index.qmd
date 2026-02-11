@@ -6,7 +6,7 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/seunghyeon-kang-07ab6437a/
+      href: https://www.linkedin.com/in/seunghyeon-kang-07ab6437a
     - icon: github
       text: Github
       href: https://github.com/KSeunghyeon
