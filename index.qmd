@@ -1,13 +1,35 @@
 ---
-title: "Seunghyeon-Kang-portfolio"
+title: "Seunghyeon Kang"
+about:
+  template: jolla
+  image: Seunghyeon.jpeg
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: www.linkedin.com/in/seunghyeon-kang-07ab6437a
+    - icon: github
+      text: Github
+      href: https://github.com/KSeunghyeon
 ---
 
-This is a Quarto website.
+**Seunghyeon Kang** is an Undergraduate Researcher and Exchange Student in the Department of Science at [California State University, Monterey Bay](http://csumb.edu).
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Education
 
-```{r}
-1 + 1
-```
+**California State University, Monterey Bay** \| Seaside, CA
+Exchange Student in Nanobio (Bioinformatics focus) \| Jan 2026 - present
 
-usethis::use_github()
+**Incheon National University** \| Incheon, South Korea
+B.S. in Nanobio \| 2019 - present
+
+## Experience
+
+**Biology Genomics Lab (Dr. Nathaniel Jue)** \| Undergraduate Researcher
+Jan 2026 - present
+
+-   Conducting comparative genomic analysis of pesticide-degrading bacteria.
+
+Work Experience \| Product Manager
+Feb 2020 - July 2022
+
+-   Led product management and marketing strategies for approximately 2.5 years at the company.
