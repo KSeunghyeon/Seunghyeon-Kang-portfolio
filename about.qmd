@@ -1,5 +1,7 @@
 ---
 title: "About"
+
+Hello! I am Seunghyeon Kang, a Biology student interested in data science and analytics.
 ---
 
 About this site
