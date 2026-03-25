@@ -1,0 +1,63 @@
+---
+title: "Portfolio Part 1"
+author: "Seunghyeon Kang"
+format: html
+editor: visual
+---
+
+# Portfolio Part 1: Development and Planning
+
+## Data Description
+
+**1. Identify your data source.**
+The primary data sources are derived from an ongoing comparative genomic analysis of pesticide-degrading bacteria. The dataset consists of two outputs generated from bioinformatics pipelines:
+
+1.  Gene prediction data generated via Prodigal, provided in `.fna` (FASTA nucleic acid) format.
+
+2.  Functional annotation data generated via OmicsBox, which will be exported as a CSV file.
+
+**2. Describe your data, including variables and data types.**
+The data will be organized from two separate files:
+
+-   **Sequence Dataset:** Contains `Gene_ID` (character string) and raw nucleotide `Sequence` (character string).
+
+-   **Annotation Dataset:** Contains `Gene_ID` (character string), `Enzyme_Code` or `GO_Terms` (character string), and `Description` (character string indicating specific biological functions).
+    Once combined and processed, the final dataset will primarily utilize `Gene_ID` (character), `GC_Content` (numeric percentage), and `Gene_Category` (factor: Pesticide-Degrading vs. Core Genome).
+
+**3. Identify the research questions you want to answer.**
+Since human-made pesticides are relatively recent in evolutionary history, are the pesticide-degrading genes in these bacteria likely acquired via Horizontal Gene Transfer (HGT) rather than evolving from ancestral genes? Can we use compositional bias—specifically, significant deviations in GC content compared to the rest of the genome—as a visual screening tool to identify these HGT candidates?
+
+## Data Visualization
+
+**1. What do you want your final visualizations to look like?**
+I plan to create two main visualizations:
+
+-   An overlaid density plot (`geom_density`) showing the distribution of GC percentages.
+
+-   A side-by-side boxplot (`geom_boxplot`) to compare the median and spread of the GC percentages between the two groups.
+
+**2. What do you want to highlight on your final visualizations in order to answer your research questions? How do you plan to do that?**
+I want to highlight the compositional bias (deviation in GC%) of the pesticide-degrading genes compared to the core genome. I plan to do this by overlaying the density curve of the pesticide-degrading genes in a distinct, high-contrast color over the broader, background density curve of the core genome.
+
+**3. What is missing from your data or would need to change in your data to create these visualizations?**
+The raw `.fna` file only provides the raw DNA letter sequences. The actual GC percentage is missing and needs to be mathematically calculated and added as a new numeric column. Additionally, the sequence data and the functional annotation data exist in two separate files and must be merged into a single dataframe to group the visualizations by gene function.
+
+## Data Cleaning
+
+**Do you need to reformat any variables into different types?**
+YES. The specific gene categories derived from the OmicsBox descriptions need to be reformatted as factor variables (e.g., "Target HGT Candidate" vs "Background Genome") so that `ggplot2` can correctly assign distinct colors and groupings.
+
+**Do you need to deal with any missing data, especially missing data coded other than NA?**
+YES. Some genes in the OmicsBox output may lack specific functional descriptions or GO terms (often left as blank strings rather than `NA`). I will need to recode these empty strings to `NA` or "Hypothetical Protein" to maintain a clean dataset.
+
+**Do you need to filter your data? How?**
+YES. I will need to filter out extremely short sequences (e.g., sequences \< 100 base pairs). Very short sequences can produce artificially skewed and extreme GC percentages, which would introduce noise into the distribution plots.
+
+**Do you need to create any new variables? What variables? How?**
+YES. I need to create a `GC_Content` variable. This will be done by calculating the proportion of 'G' and 'C' characters within the total length of the raw `Sequence` string. I also need to create a binary categorical variable (`Is_Target`) using `ifelse()` and `grepl()` to flag genes whose descriptions contain pesticide-degrading keywords.
+
+**Do you need to add new data (join) to your data? What data? How?**
+YES. I need to join the calculated GC content dataset with the OmicsBox functional annotation dataset. I will use a `left_join()` or `inner_join()` from the `dplyr` package, matching the rows by their shared `Gene_ID` column.
+
+**Are there any variables you can exclude from your data?**
+YES. I will use `select()` to exclude unnecessary columns exported from OmicsBox, such as sequence lengths, e-values, and redundant database mapping IDs, keeping only the IDs and functional descriptions needed for the plots.
