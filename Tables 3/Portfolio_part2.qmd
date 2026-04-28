@@ -1,0 +1,149 @@
+---
+title: "Portfolio Part 2: Data Cleaning and Rough Draft"
+author: "Seunghyeon Kang"
+format: html
+editor: visual
+execute:
+  echo: true
+  warning: false
+---
+
+# Research Question
+
+This project explores functional differences across pesticide-degrading bacterial strains.
+
+-   What functional gene categories are most abundant across strain types?
+-   Do different strains show similar or different functional profiles?
+
+# Data Cleaning
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(purrr)
+
+colorsVanLikes <- c(
+  "#E69F00", "#009E73", "#F0E442",
+  "#D55E00", "#0072B2", "#CC79A7"
+)
+```
+
+#Load and Combine Data
+
+```{r}
+# Read the Mal and Dimeth dataset
+mal_dimeth_df <- read_csv("MalDimeth.csv", show_col_types = FALSE) %>%
+  mutate(
+    StrainType = case_when(
+      str_detect(Strain, "^Dimeth") ~ "Dimeth",
+      str_detect(Strain, "^Mal") ~ "Mal",
+      TRUE ~ "Other"
+    )
+  )
+
+# List Chlorp annotation files
+chlorp_files <- c(
+  "Chlorp2_omicsbox_table.txt",
+  "Chlorp5_omicsbox_table.txt",
+  "Chlorp7_omicsbox_table.txt",
+  "Chlorp10_omicsbox_table.txt",
+  "Chlorp11_omicsbox_table.txt",
+  "Chlorp8_omicsbox_table.txt"
+)
+
+# List Diaz annotation files
+diaz_files <- c(
+  "Diaz11_omicsbox_table.txt",
+  "Diaz23_omicsbox_table.txt",
+  "Diaz26_omicsbox_table.txt",
+  "Diaz28_omicsbox_table.txt"
+)
+
+# Read and clean Diaz files
+diaz_df <- diaz_files %>%
+  set_names() %>%
+  map_dfr(~ read_tsv(.x, show_col_types = FALSE), .id = "File") %>%
+  mutate(
+    Strain = str_remove(File, "_omicsbox_table\\.txt$"),
+    StrainType = "Diaz",
+    Description = str_remove(Description, "^MULTISPECIES:\\s*")
+  )
+
+# Read and clean Chlorp files
+chlorp_df <- chlorp_files %>%
+  set_names() %>%
+  map_dfr(~ read_tsv(.x, show_col_types = FALSE), .id = "File") %>%
+  mutate(
+    Strain = str_remove(File, "_omicsbox_table\\.txt$"),
+    StrainType = "Chlorp",
+    Description = str_remove(Description, "^MULTISPECIES:\\s*")
+  )
+
+# Combine all annotation tables into one dataset
+df <- bind_rows(mal_dimeth_df, chlorp_df, diaz_df)
+```
+
+#Clean and Prepare Data
+
+```{r}
+# Remove blank descriptions and convert them to NA
+df_clean <- df %>%
+  mutate(Description = na_if(Description, "")) %>%
+  filter(!is.na(Description))
+
+# Keep one unique annotation per strain
+df_clean <- df_clean %>%
+  distinct(StrainType, Strain, Description, .keep_all = TRUE)
+```
+
+#Create Functional Categories
+
+```{r}
+# Assign broad functional categories based on keywords in Description
+categorize_function <- function(desc) {
+  desc <- str_to_lower(desc)
+  case_when(
+    str_detect(desc, "transporter|permease|abc|symporter|receptor|efflux") ~ "Transport",
+    str_detect(desc, "regulator|transcription|sigma|response regulator|kinase|sensor") ~ "Regulation",
+    str_detect(desc, "dehydrogenase|oxidoreductase|synthase|ligase|transferase|hydrolase|metabolic") ~ "Metabolism",
+    str_detect(desc, "stress|resistance|repair|detox|glutathione") ~ "Stress/Defense",
+    str_detect(desc, "ribosomal|polymerase|trna|elongation") ~ "Information Processing",
+    TRUE ~ "Other"
+  )
+}
+
+df_clean <- df_clean %>%
+  mutate(Category = categorize_function(Description))
+```
+
+#Save Clean Data
+
+```{r}
+dir.create("data_clean", showWarnings = FALSE)
+write_csv(df_clean, "data_clean/omics_clean_data.csv")
+```
+
+#Rough Draft Visualization
+
+```{r}
+df_clean %>%
+  count(Strain, Category) %>%
+  ggplot(aes(x = Strain, y = n, fill = Category)) +
+  geom_col() +
+  scale_fill_manual(values = colorsVanLikes) +
+  labs(
+    title = "Functional Gene Categories Across Strains",
+    x = "Strain",
+    y = "Number of Genes"
+  ) +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+#Interpretation
+
+This plot shows the distribution of broad functional gene categories across bacterial strains. Metabolism and transport-related genes appear to be the most abundant across many strains, suggesting that these functions are common among pesticide-degrading bacteria. At the same time, smaller differences across strains may indicate variation in functional specialization.
+
+#What I Want to Improve
+
+For the final version of this project, I plan to add additional visualizations that show how gene annotations are shared across strains and strain types. I also want to improve the styling and presentation of the graphs for my website.
