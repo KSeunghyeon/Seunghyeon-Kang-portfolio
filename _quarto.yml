@@ -11,6 +11,8 @@ website:
         text: "Home"
       - href: about.qmd
         text: "About Me"
+      - href: "Tables 3/OmicsStuff.qmd"
+        text: "Omics Analysis"
 
 format:
   html:
