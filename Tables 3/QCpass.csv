@@ -1,0 +1,52 @@
+Sample,Group,BUSCO (%),BUSCO Flag,Contigs,N50 (bp),Largest contig (bp),Total length (bp),Fragmentation Flag,ANI (%),ANI Flag,MASH dist,MUMmer Pattern,MUMmer Opinion,Tier,Primary Reason
+Bif1,Bif,97.6,Pass (≥95%),13,5338696,5338696,5544944,Pass,95.78,Pass (≥95%),0.003816,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Bif2,Bif,82.3,Fail (<90%),20,2923549,2923549,5235182,Pass,95.49,Pass (≥95%),0.005775,Fragmented / scattered,Fail,Exclude,BUSCO below 90%
+Bif3,Bif,96.8,Pass (≥95%),15,3176357,3176357,5529561,Pass,95.8,Pass (≥95%),0.003876,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Bif4,Bif,97.6,Pass (≥95%),13,4297284,4297284,5565507,Pass,95.82,Pass (≥95%),0.00349,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Bif6,Bif,98.4,Pass (≥95%),7,4715103,4715103,4839499,Pass,98.67,Pass (≥95%),0.011621,Clean diagonal,Pass,Tier 1,Reference-level quality; strongest Bif sample
+Bif7,Bif,91.1,Borderline (90–94.9%),9,5247395,5247395,5430313,Pass,95.69,Pass (≥95%),0.00458,Clean diagonal,Pass,Tier 1,BUSCO borderline but ANI and structure are strong
+Bif8,Bif,91.1,Borderline (90–94.9%),14,3476665,3476665,5479787,Pass,95.69,Pass (≥95%),0.004332,Clean diagonal,Pass,Tier 1,BUSCO borderline but ANI and structure are strong
+Bif9,Bif,97.6,Pass (≥95%),14,3215403,3215403,5581238,Pass,95.87,Pass (≥95%),0.00317,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Chlorp2,Chlorp,98.4,Pass (≥95%),22,1213213,2295201,5593189,Pass,84.9,Fail (<90%),0.11676,Rearranged multi-diagonal + cluster,Variable,Tier 2,Strong completeness but ANI ~85% and rearranged structure
+Chlorp3,Chlorp,94.4,Borderline (90–94.9%),23,1108124,2195650,5455812,Pass,85.21,Fail (<90%),0.119909,Rearranged multi-diagonal + cluster,Variable,Tier 2,ANI below species threshold and rearranged structure
+Chlorp4,Chlorp,83.9,Fail (<90%),14,1205907,2355476,5525326,Pass,84.82,Fail (<90%),0.118834,Noisy / weak continuity,Fail,Exclude,BUSCO below 90% plus structural instability
+Chlorp5,Chlorp,100,Pass (≥95%),14,1204766,2391998,5687596,Pass,84.97,Fail (<90%),0.117785,Rearranged multi-diagonal + cluster,Variable,Tier 2,Complete genome but ANI ~85% and rearranged structure
+Chlorp7,Chlorp,99.2,Pass (≥95%),14,1225952,2346065,5660339,Pass,84.93,Fail (<90%),0.11676,Rearranged multi-diagonal + cluster,Variable,Tier 2,Complete genome but ANI ~85% and rearranged structure
+Chlorp8,Chlorp,96,Pass (≥95%),16,3206303,3206303,5544219,Pass,95.82,Pass (≥95%),0.003549,Clean diagonal,Pass,Tier 1,Only Chlorp sample meeting ANI threshold with clean MUMmer
+Chlorp10,Chlorp,99.2,Pass (≥95%),17,1137405,2351172,5674255,Pass,84.92,Fail (<90%),0.117785,Rearranged multi-diagonal + cluster,Variable,Tier 2,Complete genome but ANI ~85% and rearranged structure
+Chlorp11,Chlorp,96.8,Pass (≥95%),21,1214525,2282110,5633582,Pass,85,Fail (<90%),0.11676,Rearranged multi-diagonal + cluster,Variable,Tier 2,ANI below species threshold and rearranged structure
+Diaz8,Diaz,96.8,Pass (≥95%),430,21559,98235,4831150,Fail (severe fragmentation),94.28,Borderline (90–94.9%),0.052714,Broken / random cloud,Fail,Exclude,"Severe fragmentation: 430 contigs, N50 21,559 bp"
+Diaz11,Diaz,91.1,Borderline (90–94.9%),22,6307302,6307302,6361678,Pass,91.47,Borderline (90–94.9%),0.069644,Diagonal + scatter / cluster,Variable,Tier 2,Good assembly but ANI 91.47% and variable MUMmer
+Diaz18,Diaz,97.6,Pass (≥95%),184,65526,223166,4969546,Fail (severe fragmentation),94.24,Borderline (90–94.9%),0.052714,Broken / low synteny,Fail,Exclude,"Severe fragmentation: 184 contigs, N50 65,526 bp"
+Diaz21,Diaz,94.4,Borderline (90–94.9%),15,6435676,6435676,6477828,Pass,91.55,Borderline (90–94.9%),0.069966,Diagonal + inversion / scatter,Variable,Tier 2,Good assembly but ANI 91.55% and variable MUMmer
+Diaz23,Diaz,96.8,Pass (≥95%),16,4534751,4534751,4564093,Pass,95.47,Pass (≥95%),0.040585,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Diaz26,Diaz,98.4,Pass (≥95%),7,1241268,1693962,4568770,Pass,82.16,Fail (<90%),0.08931,Fragmented diagonal,Variable,Tier 2,Good assembly but ANI 82.16% indicates taxonomic distance
+Diaz28,Diaz,94.4,Borderline (90–94.9%),15,4697082,4697082,5248095,Pass,96.63,Pass (≥95%),0.010021,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Dimeth1,Dimeth,97.6,Pass (≥95%),4,3752474,3752474,3757529,Pass,83.94,Fail (<90%),0.014456,Rearranged / central cluster,Variable,Tier 2,Good assembly but ANI 83.94% and rearranged structure
+Dimeth2,Dimeth,100,Pass (≥95%),9,4830761,4830761,5205178,Pass,96.86,Pass (≥95%),0.009126,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Dimeth3,Dimeth,100,Pass (≥95%),38,4891645,4891645,5622009,Pass,97.31,Pass (≥95%),0.009166,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Dimeth4,Dimeth,100,Pass (≥95%),17,5267329,5267329,5530022,Pass,89.82,Fail (<90%),0.017011,Diagonal + noise,Variable,Tier 2,Good assembly but ANI 89.82% below species threshold
+Dimeth7,Dimeth,98.4,Pass (≥95%),9,3547476,3547476,4988264,Pass,96.96,Pass (≥95%),0.025161,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Dimeth8,Dimeth,99.2,Pass (≥95%),20,5194345,5194345,5511222,Pass,89.82,Fail (<90%),0.023301,Fragmented / noisy,Variable,Tier 2,Good completeness but ANI 89.82% and variable structure
+Dimeth9,Dimeth,98.4,Pass (≥95%),28,5064590,5064590,5506606,Pass,97.24,Pass (≥95%),0.012353,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Imid1W,Imid,84.7,Fail (<90%),4,3307637,3307637,3313916,Pass,83.37,Fail (<90%),0.136948,Broken / random,Fail,Exclude,BUSCO below 90% and broken MUMmer
+Imid1Y,Imid,98.4,Pass (≥95%),3,3370239,3370239,3376519,Pass,83.31,Fail (<90%),0.136948,Clean diagonal,Pass,Tier 2,High completeness but ANI 83.31% indicates different species
+Imid2,Imid,96,Pass (≥95%),7,4518204,4518204,4526893,Pass,83.15,Fail (<90%),0.156619,Clean diagonal,Pass,Tier 2,High completeness but ANI 83.15% indicates different species
+Imid3,Imid,98.4,Pass (≥95%),3,2703594,2703594,3699062,Pass,83.93,Fail (<90%),0.013306,Noisy / scattered blocks,Variable,Tier 2,High completeness but ANI 83.93% and noisy MUMmer
+Imid5,Imid,97.6,Pass (≥95%),2,3700417,3700417,3705823,Pass,83.93,Fail (<90%),0.013112,Noisy / scattered blocks,Variable,Tier 2,High completeness but ANI 83.93% and noisy MUMmer
+Imid6,Imid,92.7,Borderline (90–94.9%),10,2273128,2273128,4467149,Pass,83.02,Fail (<90%),0.154223,Clean diagonal,Pass,Tier 2,BUSCO 92.7% but ANI 83.02% indicates different species
+Imid8,Imid,98.4,Pass (≥95%),70,496063,2055444,4537475,Variable,83.54,Fail (<90%),0.12101,Fragmented / random,Fail,Exclude,70 contigs plus fragmented/random MUMmer
+Imid9Y,Imid,95.2,Pass (≥95%),1,3653733,3653733,3653733,Pass,83.87,Fail (<90%),0.0136,Noisy / scattered blocks,Variable,Tier 2,High completeness but ANI 83.87% and noisy MUMmer
+Mal1,Mal,100,Pass (≥95%),11,5704562,5704562,5715777,Pass,99.32,Pass (≥95%),0.006044,Clean diagonal + inversion,Variable,Tier 2,Excellent metrics but structural inversion/rearrangement
+Mal2,Mal,100,Pass (≥95%),8,3787947,3787947,6663036,Pass,91.87,Borderline (90–94.9%),0.065972,Mixed diagonal + central reverse block,Variable,Tier 2,ANI 91.87% and variable MUMmer
+Mal3,Mal,100,Pass (≥95%),10,5699140,5699140,5708954,Pass,99.35,Pass (≥95%),0.006078,Reverse diagonal (orientation difference),Variable,Tier 2,Orientation difference (reverse diagonal)
+Mal4,Mal,99.2,Pass (≥95%),11,5680967,5680967,5690693,Pass,99.28,Pass (≥95%),0.00642,Clean diagonal + inversion,Variable,Tier 2,Excellent metrics but structural inversion/rearrangement
+Mal5,Mal,96,Pass (≥95%),9,5654555,5654555,5666117,Pass,99.32,Pass (≥95%),0.006455,Mixed diagonal + reverse block,Variable,Tier 2,Good metrics but mixed / rearranged MUMmer
+Mal6,Mal,97.6,Pass (≥95%),14,5449712,5449712,5463598,Pass,99.2,Pass (≥95%),0.007304,Diagonal + inversion / scatter,Variable,Tier 2,High ANI but structural variation
+Mal7,Mal,96.8,Pass (≥95%),12,5389520,5389520,5441860,Pass,99.25,Pass (≥95%),0.007523,Diagonal + inversion / scatter,Variable,Tier 2,High ANI but structural variation
+Mal8,Mal,96.8,Pass (≥95%),13,5440650,5440650,5453158,Pass,99.25,Pass (≥95%),0.00745,Diagonal + inversion / scatter,Variable,Tier 2,High ANI but structural variation
+Perm1,Perm,81.5,Fail (<90%),50,562839,1073940,7357004,Pass,96.22,Pass (≥95%),0.006559,Fragmented diagonal,Variable,Exclude,BUSCO below 90% (81.5%) despite usable MUMmer
+Perm2,Perm,99.2,Pass (≥95%),16,5324768,5324768,5365048,Pass,89.8,Fail (<90%),0.015347,Clean diagonal,Pass,Tier 2,Clean structure but ANI 89.80% below species threshold
+Perm3,Perm,96.8,Pass (≥95%),15,4313917,4313917,5581894,Pass,95.85,Pass (≥95%),0.003402,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Perm4,Perm,96,Pass (≥95%),10,5379983,5379983,5559889,Pass,95.84,Pass (≥95%),0.00349,Clean diagonal,Pass,Tier 1,"Meets completeness, ANI, and structural criteria"
+Perm5,Perm,100,Pass (≥95%),6,2433633,2433633,2543616,Pass,84.56,Fail (<90%),0.009086,Clean diagonal,Pass,Tier 2,Clean structure but ANI 84.56% indicates different species
